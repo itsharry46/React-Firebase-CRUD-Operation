@@ -19,7 +19,7 @@ const Contacts = () => {
     }, []);
 
     const addOrEdit = (obj) => {
-        if (currentId == '')
+        if (currentId === '')
             fireDb.child('contacts').push(
                 obj,
                 err => {
