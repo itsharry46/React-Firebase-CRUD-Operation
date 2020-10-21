@@ -1,15 +1,17 @@
-import * as firebase from 'firebase';
+import firebase from 'firebase/app';
+import 'firebase/database';
+import 'firebase/storage'
 
 var firebaseConfig = {
-    apiKey: "AIzaSyB9lpEAu_CEKXPVGmnKsgUQUSkp3MQNSEg",
-    authDomain: "react-crud-operation.firebaseapp.com",
-    databaseURL: "https://react-crud-operation.firebaseio.com",
-    projectId: "react-crud-operation",
-    storageBucket: "react-crud-operation.appspot.com",
-    messagingSenderId: "117692492985",
-    appId: "1:117692492985:web:97dc89691f97f68410ff68"
-  };
-  // Initialize Firebase
-  var fireDb = firebase.initializeApp(firebaseConfig);
+  apiKey: "AIzaSyAwZr3a8Pturievq8Qx9NjRdWHLmuvdEwk",
+  authDomain: "react-crud-operations.firebaseapp.com",
+  databaseURL: "https://react-crud-operations.firebaseio.com",
+  projectId: "react-crud-operations",
+  storageBucket: "react-crud-operations.appspot.com",
+  messagingSenderId: "830913205231",
+  appId: "1:830913205231:web:364adfdd67dc334b041c1a"
+};
+// Initialize Firebase
+var fireDb = firebase.initializeApp(firebaseConfig);
 
-  export default fireDb.database().ref();
+export default fireDb.database().ref();
