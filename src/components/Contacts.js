@@ -15,11 +15,14 @@ const Contacts = () => {
                 setContactObjects({
                     ...snapshot.val()
                 })
+            else
+                setContactObjects({})
+
         })
     }, []);
 
     const addOrEdit = (obj) => {
-        if (currentId == '')
+        if (currentId === '')
             fireDb.child('contacts').push(
                 obj,
                 err => {
@@ -41,25 +44,14 @@ const Contacts = () => {
             )
     }
 
-    const onDelete = keys => {
-        if (Swal.fire({
-            title: 'Are you sure you want to delete the record?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-          }).then((result) => {
-            if (result.isConfirmed) {
-              Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
-                'success'
-              )
-            }
-          })) {
-            fireDb.child(`contacts/${currentId}`).remove(
+    const onDelete = key => {
+        if (Swal.fire(
+            'Good job!',
+            'You Deleted the record!',
+            'success'
+          )
+          ) {
+            fireDb.child(`contacts/${key}`).remove(
                 err => {
                     if (err)
                         console.log(err)
@@ -100,10 +92,10 @@ const Contacts = () => {
                                             <td>{contactObjects[id].mobile}</td>
                                             <td>{contactObjects[id].email}</td>
                                             <td>
-                                                <a className="btn text-primary" onClick={() => { setCurrentId(id) }} >
+                                                <a href="!#" className="btn text-primary" onClick={() => { setCurrentId(id) }} >
                                                     <i className="fas fa-pencil-alt"></i>
                                                 </a>
-                                                <a className="btn text-danger" onClick={() => { onDelete(id) }} >
+                                                <a href="!#" className="btn text-danger" onClick={() => { onDelete(id) }} >
                                                     <i className="far fa-trash-alt"></i>
                                                 </a>
                                             </td>
